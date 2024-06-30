@@ -14,4 +14,9 @@ public class ToDoTask : BaseEntity
         Description = description;
         IsCompleted = isCompleted;
     }
+
+    public void UpdateEditTime()
+    {
+        EditedAt = DateTime.Now;
+    }
 }

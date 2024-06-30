@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Repository.Contexts;
 using Repository.Repositories.Base;
 
@@ -12,5 +13,10 @@ public class TodoTaskRepository : BaseRepository<ToDoTask>, IToDoTaskRepository
     public TodoTaskRepository(AppDbContext appDbContext) : base(appDbContext)
     {
         _appDbContext = appDbContext;
+    }
+
+    public async Task<bool> TaskExistsByTitleAsync(string taskTitle)
+    {
+        return await _appDbContext.ToDoTasks.AnyAsync(t => t.Title == taskTitle);
     }
 }

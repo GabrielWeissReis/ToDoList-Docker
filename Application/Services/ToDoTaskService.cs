@@ -35,7 +35,11 @@ public class ToDoTaskService : IToDoTaskService
 
     public async Task AddTaskAsync(ToDoTaskDTO taskDTO)
     {
+        if (await _taskRepository.TaskExistsByTitleAsync(taskDTO.Title))
+            throw new ArgumentException($"A task with the title '{taskDTO.Title}' already exists.");
+
         var task = _mapper.Map<ToDoTask>(taskDTO);
+
         await _taskRepository.AddAsync(task);
     }
 
@@ -44,7 +48,10 @@ public class ToDoTaskService : IToDoTaskService
         var task = await _taskRepository.GetByIdAsync(taskDTO.Id);
         if (task != null)
         {
+            task.UpdateEditTime();
+
             _mapper.Map(taskDTO, task);
+
             await _taskRepository.UpdateAsync(task);
         }
     }
