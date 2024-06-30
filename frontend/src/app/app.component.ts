@@ -1,37 +1,37 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
+interface ToDoTasks {
+    id: number;
+    title: string;
+    description: string;
+    isCompleted: boolean;
 }
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  public forecasts: WeatherForecast[] = [];
+    public tasks: ToDoTasks[] = [];
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
-  ngOnInit() {
-    this.getForecasts();
-  }
+    ngOnInit() {
+        this.getTasks();
+    }
 
-  getForecasts() {
-    this.http.get<WeatherForecast[]>('http://localhost:8080/weatherforecast').subscribe(
-      (result) => {
-        this.forecasts = result;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
+    getTasks() {
+        this.http.get<ToDoTasks[]>('http://localhost:8080/api/ToDoTask/GetTasks').subscribe(
+            (result) => {
+                this.tasks = result;
+            },
+            (error) => {
+                console.error(error);
+            }
+        );
+    }
 
-  title = 'frontend';
+    title = 'frontend';
 }
