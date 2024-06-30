@@ -15,6 +15,11 @@ public class ToDoTask : BaseEntity
         IsCompleted = isCompleted;
     }
 
+    public void UpdateAddTime()
+    {
+        CreatedAt = DateTime.Now;
+    }
+
     public void UpdateEditTime()
     {
         EditedAt = DateTime.Now;

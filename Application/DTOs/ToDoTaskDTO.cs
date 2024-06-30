@@ -16,4 +16,7 @@ public class ToDoTaskDTO
 
     [Required]
     public bool IsCompleted { get; set; }
+
+    public DateTime? CreatedAt { get; set; }
+    public DateTime? EditedAt { get; set; }
 }

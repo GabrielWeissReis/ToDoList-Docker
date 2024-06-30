@@ -40,6 +40,8 @@ public class ToDoTaskService : IToDoTaskService
 
         var task = _mapper.Map<ToDoTask>(taskDTO);
 
+        task.UpdateAddTime();
+
         await _taskRepository.AddAsync(task);
     }
 
@@ -48,9 +50,9 @@ public class ToDoTaskService : IToDoTaskService
         var task = await _taskRepository.GetByIdAsync(taskDTO.Id);
         if (task != null)
         {
-            task.UpdateEditTime();
-
             _mapper.Map(taskDTO, task);
+
+            task.UpdateEditTime();
 
             await _taskRepository.UpdateAsync(task);
         }

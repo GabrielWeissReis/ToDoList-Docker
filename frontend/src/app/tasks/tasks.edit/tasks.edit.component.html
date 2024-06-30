@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="my-4">Task Management</h1>
+        </div>
+    </div>
+    <div class="row">
+        <form #taskForm="ngForm" (ngSubmit)="updateTask(taskForm)">
+            <div class="mb-3">
+                <label for="title" class="form-label">Task Title <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="title" name="title" [(ngModel)]="task.title" placeholder="minimum of 3 and maximum of 100 characters" required minlength="3" maxlength="100">
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Task Description <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="description" name="description" [(ngModel)]="task.description" placeholder="minimum of 3 and maximum of 500 characters" required minlength="3" maxlength="500"></textarea>
+            </div>
+
+            <div class="mb-3 form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" id="isCompleted" name="isCompleted" [(ngModel)]="task.isCompleted">
+                <label class="form-check-label" for="isCompleted">Task Is Completed?</label>
+            </div>
+
+            <br />
+
+            <div class="col-12 mt-2">
+                <button class="btn btn-secondary" (click)="backToTaskList()">Back To Task List</button>
+                &nbsp;
+                <button type="submit" class="btn btn-success" [disabled]="!taskForm.valid">Update Task</button>
+            </div>
+        </form>
+    </div>
+</div>

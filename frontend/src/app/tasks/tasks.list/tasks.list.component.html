@@ -1,0 +1,47 @@
+<div class="container">
+    <h1 class="my-4">Task Management</h1>
+
+    <p *ngIf="!tasks" class="alert alert-info"><em>Loading... Please refresh once the ASP.NET backend has started.</em></p>
+
+    <div *ngIf="tasks">
+        <div class="row">
+            <div class="col-12 text-end">
+                <button class="btn btn-success float-right" (click)="navigateToTaskAdd()">Add New Task</button>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12">
+                <table class="table table-hover task-table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Created At</th>
+                            <th>Edited At</th>
+                            <th>Is Completed?</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let task of tasks">
+                            <td>{{ task.id }}</td>
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.description }}</td>
+                            <td>{{ task.createdAt | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                            <td>{{ task.editedAt | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                            <td [class.text-success]="task.isCompleted" [class.text-danger]="!task.isCompleted">
+                                {{ task.isCompleted ? 'Yes' : 'No' }}
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" (click)="editTask(task.id)">Edit</button>
+                                &nbsp;
+                                <button class="btn btn-danger btn-sm" (click)="deleteTask(task.id)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
