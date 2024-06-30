@@ -1,8 +1,13 @@
+using Configurations;
+using Microsoft.EntityFrameworkCore;
+using Repository.Contexts;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
+
+// inject dependencies
+builder.Services.InjectDependencies(builder.Configuration);
 
 builder.Services.AddCors(options =>
 {
@@ -34,5 +39,17 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+// apply migrations
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var context = services.GetRequiredService<AppDbContext>();
+    if (context.Database.GetPendingMigrations().Any())
+    {
+        context.Database.Migrate();
+    }
+}
 
 app.Run();
