@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "backend\Api.csproj", "{3FF48DBC-1266-4487-B6D5-743A40D75416}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{3FF48DBC-1266-4487-B6D5-743A40D75416}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. backend", "2. backend", "{9C0554DC-3F68-4C64-AF4D-5370DBE5F08E}"
 EndProject
