@@ -55,6 +55,7 @@ Execute o comando abaixo na raiz do projeto onde está localizado o arquivo dock
 - `Testes`: adicionar maior cobertura de testes.
 - `API Gateway`: adicionar API Gateway, por exemplo Ocelot, para termos um ponto de entrada único de requisições para a API e eventuais futuros microsserviços de backend.
 - `Docker Hub Container Image Library`: adicionar as imagens ao Docker Hub para agilizar o tempo de download.
+- `Prometheus/Grafana`: para coletar/armazenar métricas e criar deshboards interativos.
   
 ## Imagens do Projeto
 
