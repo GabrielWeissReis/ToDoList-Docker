@@ -56,4 +56,4 @@ Execute o comando abaixo na raiz do projeto onde está localizado o arquivo dock
 ![image](https://github.com/GabrielWeissReis/ToDoList-Docker/assets/20742093/88b4fb70-c7bc-429d-8b47-991f156a7841)
 ![image](https://github.com/GabrielWeissReis/ToDoList-Docker/assets/20742093/14902322-1e4e-4067-9bf9-8f78c2fbbbcd)
 ![image](https://github.com/GabrielWeissReis/ToDoList-Docker/assets/20742093/732987a6-75a8-4057-9eed-adb9869bb3ac)
-
+![image](https://github.com/GabrielWeissReis/ToDoList-Docker/assets/20742093/bf07596a-1b16-430c-b2ab-2d31155db901)
