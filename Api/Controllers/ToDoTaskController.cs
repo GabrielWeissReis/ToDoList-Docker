@@ -18,57 +18,94 @@ public class ToDoTaskController : ControllerBase
     [HttpGet("GetTasks")]
     public async Task<IActionResult> GetTasks()
     {
-        var tasks = await _taskService.GetAllTasksAsync();
-
-        return Ok(tasks);
+        try
+        {
+            var tasks = await _taskService.GetAllTasksAsync();
+            return Ok(tasks);
+        }
+        catch
+        {
+            return StatusCode(500, "Internal server error");
+        }
     }
 
     [HttpGet("GetTask/{id}")]
     public async Task<IActionResult> GetTask(int id)
     {
-        var task = await _taskService.GetTaskByIdAsync(id);
-        if (task == null)
-            return NotFound();
+        try
+        {
+            var task = await _taskService.GetTaskByIdAsync(id);
+            if (task == null)
+                return NotFound();
 
-        return Ok(task);
+            return Ok(task);
+        }
+        catch
+        {
+            return StatusCode(500, "Internal server error");
+        }
     }
 
     [HttpPost("CreateTask")]
     public async Task<IActionResult> CreateTask(ToDoTaskDTO taskDto)
     {
-        if (taskDto == null)
-            return BadRequest("Task data is missing");
+        try
+        {
+            if (taskDto == null)
+                return BadRequest("Task data is missing");
 
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-        await _taskService.AddTaskAsync(taskDto);
+            await _taskService.AddTaskAsync(taskDto);
 
-        return CreatedAtAction(nameof(GetTask), new { id = taskDto.Id }, taskDto);
+            return CreatedAtAction(nameof(GetTask), new { id = taskDto.Id }, taskDto);
+        }
+        catch
+        {
+            return StatusCode(500, "Internal server error");
+        }
     }
 
     [HttpPut("UpdateTask/{id}")]
     public async Task<IActionResult> UpdateTask(int id, ToDoTaskDTO taskDto)
     {
-        if (taskDto == null)
-            return BadRequest("Task data is missing");
+        try
+        {
+            if (taskDto == null)
+                return BadRequest("Task data is missing");
 
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-        if (id != taskDto.Id)
-            return BadRequest();
+            if (id != taskDto.Id)
+                return BadRequest();
 
-        await _taskService.UpdateTaskAsync(taskDto);
+            await _taskService.UpdateTaskAsync(taskDto);
 
-        return NoContent();
+            return NoContent();
+        }
+        catch
+        {
+            return StatusCode(500, "Internal server error");
+        }
     }
 
     [HttpDelete("DeleteTask/{id}")]
     public async Task<IActionResult> DeleteTask(int id)
     {
-        await _taskService.DeleteTaskAsync(new ToDoTaskDTO { Id = id });
-
-        return NoContent();
+        try
+        {
+            await _taskService.DeleteTaskAsync(new ToDoTaskDTO { Id = id });
+            return NoContent();
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (Exception)
+        {
+            return StatusCode(500, "Internal server error");
+        }
     }
 }

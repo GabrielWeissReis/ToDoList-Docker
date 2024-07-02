@@ -62,6 +62,11 @@ public class ToDoTaskService : IToDoTaskService
     {
         var task = await _taskRepository.GetByIdAsync(taskDTO.Id);
         if (task != null)
+        {
             await _taskRepository.DeleteAsync(task);
+            return;
+        }
+
+        throw new KeyNotFoundException("Task not found");
     }
 }
