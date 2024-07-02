@@ -4,7 +4,7 @@
 
 Esta aplicação é composta por um frontend em Angular e um backend em .NET Web API, utilizando Domain-Driven Design (DDD), clean code e clean architecture, e testes de unidade em cada camada para garantir a qualidade do código.
 
-ATENÇÃO: o projeto foi criado no Visual Studio, e a visualização correta da estrutura de pastas/camadas só será possível caso o Visual Studio esteja sendo utilizado, conforme imagem abaixo.
+**ATENÇÃO: o projeto foi criado no Visual Studio, e a visualização correta da estrutura de pastas/camadas só será possível caso o Visual Studio esteja sendo utilizado, conforme imagem abaixo.**
 
 ## Estrutura do Projeto
 
