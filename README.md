@@ -51,11 +51,11 @@ Execute o comando abaixo na raiz do projeto onde está localizado o arquivo dock
 
 **Backend**: http://localhost:8080/swagger/index.html
 
-4. **TODO**
+## TODO
 - `Testes`: adicionar maior cobertura de testes;
 - `API Gateway`: adicionar API Gateway, por exemplo Ocelot, para termos um ponto de entrada único para requisições para a API e eventuais futuros microsserviços de backend;
   
-5. **Imagens do projeto**
+## Imagens do Projeto
 
 ![image](https://github.com/GabrielWeissReis/ToDoList-Docker/assets/20742093/88b4fb70-c7bc-429d-8b47-991f156a7841)
 ![image](https://github.com/GabrielWeissReis/ToDoList-Docker/assets/20742093/14902322-1e4e-4067-9bf9-8f78c2fbbbcd)
